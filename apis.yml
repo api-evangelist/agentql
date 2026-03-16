@@ -22,12 +22,12 @@ type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2025-08-19'
-modified: '2025-09-02'
+modified: '2026-03-16'
 position: Consumer
 description: 'AgentQL connects LLMs and AI agents to the entire web '
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
 specificationVersion: '0.19'
 common:
   - name: AgentQL Documentation | AgentQL
