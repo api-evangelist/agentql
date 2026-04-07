@@ -5,9 +5,9 @@ apis:
   - aid: agentql:agentql
     name: AgentQL
     tags:
+      - Agents
       - Artificial Intelligence
       - Web
-      - Agents
     humanURL: ' https://www.agentql.com/'
     properties:
       - url: ' https://www.agentql.com/'
@@ -16,9 +16,9 @@ apis:
       AgentQL connects LLMs and AI agents to the entire web.
 name: AgentQL
 tags:
+  - Agents
   - Artificial Intelligence
   - Web
-  - Agents
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
