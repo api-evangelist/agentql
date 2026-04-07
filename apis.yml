@@ -12,7 +12,8 @@ apis:
     properties:
       - url: ' https://www.agentql.com/'
         type: Documentation
-    description: 'AgentQL connects LLMs and AI agents to the entire web '
+    description: >-
+      AgentQL connects LLMs and AI agents to the entire web.
 name: AgentQL
 tags:
   - Artificial Intelligence
@@ -24,7 +25,8 @@ access: 3rd-Party
 created: '2025-08-19'
 modified: '2026-03-16'
 position: Consumer
-description: 'AgentQL connects LLMs and AI agents to the entire web '
+description: >-
+  AgentQL connects LLMs and AI agents to the entire web.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
