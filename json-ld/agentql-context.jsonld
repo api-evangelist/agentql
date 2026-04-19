@@ -1,0 +1,80 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "agql": "https://api.agentql.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "QueryDataRequest": "agql:QueryDataRequest",
+    "QueryDataResponse": "agql:QueryDataResponse",
+    "CreateSessionRequest": "agql:CreateSessionRequest",
+    "CreateSessionResponse": "agql:CreateSessionResponse",
+    "QueryDocumentRequest": "agql:QueryDocumentRequest",
+
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "query": {
+      "@id": "agql:query",
+      "@type": "xsd:string"
+    },
+    "prompt": {
+      "@id": "agql:prompt",
+      "@type": "xsd:string"
+    },
+    "html": {
+      "@id": "agql:html",
+      "@type": "xsd:string"
+    },
+    "data": {
+      "@id": "agql:data",
+      "@type": "@id"
+    },
+    "metadata": {
+      "@id": "agql:metadata",
+      "@type": "@id"
+    },
+    "requestId": {
+      "@id": "dcterms:identifier",
+      "@type": "xsd:string"
+    },
+    "responseTimeMs": {
+      "@id": "agql:response_time_ms",
+      "@type": "xsd:integer"
+    },
+    "sessionId": {
+      "@id": "agql:session_id",
+      "@type": "xsd:string"
+    },
+    "cdpUrl": {
+      "@id": "agql:cdp_url",
+      "@type": "@id"
+    },
+    "expiresAt": {
+      "@id": "schema:expires",
+      "@type": "xsd:dateTime"
+    },
+    "mode": {
+      "@id": "agql:mode",
+      "@type": "xsd:string"
+    },
+    "waitFor": {
+      "@id": "agql:wait_for",
+      "@type": "xsd:integer"
+    },
+    "browserProfile": {
+      "@id": "agql:browser_profile",
+      "@type": "xsd:string"
+    },
+    "browserUaPreset": {
+      "@id": "agql:browser_ua_preset",
+      "@type": "xsd:string"
+    },
+    "inactivityTimeoutSeconds": {
+      "@id": "agql:inactivity_timeout_seconds",
+      "@type": "xsd:integer"
+    }
+  }
+}

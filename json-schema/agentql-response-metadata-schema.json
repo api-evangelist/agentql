@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/agentql/refs/heads/main/json-schema/agentql-response-metadata-schema.json",
+  "title": "ResponseMetadata",
+  "description": "Metadata about the API response.",
+  "type": "object",
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "description": "Unique identifier for this API request.",
+      "example": "req-a1b2c3d4"
+    },
+    "response_time_ms": {
+      "type": "integer",
+      "description": "Time taken to complete the request in milliseconds.",
+      "example": 1847
+    }
+  }
+}

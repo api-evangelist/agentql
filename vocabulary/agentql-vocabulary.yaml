@@ -1,0 +1,188 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: AgentQL
+  description: Vocabulary and taxonomy for AgentQL, the AI-powered web scraping, data extraction, and browser automation platform.
+  created: '2026-04-19'
+  modified: '2026-04-19'
+
+operational:
+  apis:
+    - name: AgentQL Query Data API
+      namespace: agentql-query-data
+      version: v1
+      baseUrl: https://api.agentql.com/v1
+      status: active
+    - name: AgentQL Remote Browser Sessions API
+      namespace: agentql-browser
+      version: v1
+      baseUrl: https://api.agentql.com/v1
+      status: active
+    - name: AgentQL Query Document API
+      namespace: agentql-document
+      version: v1
+      baseUrl: https://api.agentql.com/v1
+      status: active
+
+  resources:
+    - name: query-results
+      description: Structured data extracted from web pages using AgentQL queries
+      actions:
+        - extract
+    - name: sessions
+      description: Remote Chrome browser sessions for authenticated web automation
+      actions:
+        - create
+        - get
+        - terminate
+    - name: documents
+      description: PDF and image documents for structured data extraction
+      actions:
+        - query
+
+  actions:
+    - name: extract
+      description: Extract structured data from a URL or HTML using a query or prompt
+      httpMethod: POST
+      pattern: query
+    - name: create
+      description: Create a new remote browser session
+      httpMethod: POST
+      pattern: write
+    - name: query
+      description: Query a document for structured data
+      httpMethod: POST
+      pattern: query
+    - name: terminate
+      description: End a remote browser session
+      httpMethod: DELETE
+      pattern: destructive
+
+  schemas:
+    core:
+      - name: QueryDataRequest
+        description: Request for web page data extraction
+        properties:
+          - url
+          - html
+          - query
+          - prompt
+          - params
+      - name: CreateSessionResponse
+        description: Remote browser session details
+        properties:
+          - session_id
+          - cdp_url
+          - expires_at
+      - name: QueryDataResponse
+        description: Extracted structured data response
+        properties:
+          - data
+          - metadata
+
+  parameters:
+    query:
+      - name: query
+        description: AgentQL query string for structured extraction
+      - name: prompt
+        description: Natural language description of the data to extract
+    configuration:
+      - name: mode
+        description: Extraction speed mode (fast or standard)
+      - name: wait_for
+        description: Milliseconds to wait for dynamic content
+      - name: browser_profile
+        description: Browser behavior profile (light or stealth)
+
+  enums:
+    mode:
+      - fast
+      - standard
+    browser_profile:
+      - light
+      - stealth
+    browser_ua_preset:
+      - windows
+      - macos
+      - linux
+
+  authentication:
+    schemes:
+      - name: API Key
+        type: apiKey
+        description: X-API-Key header with key from dev.agentql.com
+
+capability:
+  workflows:
+    - name: Web Data Extraction
+      description: Extract structured data from any public web page using AgentQL queries
+      apis:
+        - agentql-query-data
+      personas:
+        - AI Developer
+        - Data Engineer
+      domains:
+        - Data Extraction
+    - name: Authenticated Web Automation
+      description: Use remote browser sessions to automate authenticated web interactions
+      apis:
+        - agentql-browser
+      personas:
+        - AI Developer
+      domains:
+        - Browser Automation
+    - name: Document Data Extraction
+      description: Extract structured data from PDF invoices, reports, and images
+      apis:
+        - agentql-document
+      personas:
+        - Data Engineer
+      domains:
+        - Document Processing
+
+  personas:
+    - id: ai-developer
+      name: AI Developer
+      description: Developers building AI agents that need web access and data extraction capabilities
+      workflows:
+        - Web Data Extraction
+        - Authenticated Web Automation
+    - id: data-engineer
+      name: Data Engineer
+      description: Engineers building data pipelines that collect structured data from web sources
+      workflows:
+        - Web Data Extraction
+        - Document Data Extraction
+
+  domains:
+    - name: Data Extraction
+      description: Extracting structured data from web pages using natural language queries
+    - name: Browser Automation
+      description: Programmatic browser control for authenticated and complex web interactions
+    - name: Document Processing
+      description: Extracting structured data from PDFs and image documents
+
+crossReference:
+  - resource: query-results
+    operations:
+      - extract
+    workflows:
+      - Web Data Extraction
+    personas:
+      - AI Developer
+      - Data Engineer
+  - resource: sessions
+    operations:
+      - create
+      - terminate
+    workflows:
+      - Authenticated Web Automation
+    personas:
+      - AI Developer
+  - resource: documents
+    operations:
+      - query
+    workflows:
+      - Document Data Extraction
+    personas:
+      - Data Engineer

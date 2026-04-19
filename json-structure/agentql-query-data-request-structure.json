@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/agentql/refs/heads/main/json-structure/agentql-query-data-request-structure.json",
+  "name": "QueryDataRequest",
+  "description": "Request body for querying data from a web page.",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "uri",
+      "description": "The URL of the web page to query.",
+      "example": "https://news.ycombinator.com"
+    },
+    "html": {
+      "type": "string",
+      "description": "Raw HTML content to query instead of a URL.",
+      "example": "<html><body><h1>Hello World</h1></body></html>"
+    },
+    "query": {
+      "type": "string",
+      "description": "AgentQL query string for structured data extraction.",
+      "example": "{ posts[] { title link score } }"
+    },
+    "prompt": {
+      "type": "string",
+      "description": "Natural language description of the data to extract (alternative to query).",
+      "example": "Extract the top 10 posts with their titles, links, and scores"
+    },
+    "params": {
+      "$ref": "#/components/schemas/QueryParams"
+    }
+  }
+}

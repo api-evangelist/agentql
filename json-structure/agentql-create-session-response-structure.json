@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/agentql/refs/heads/main/json-structure/agentql-create-session-response-structure.json",
+  "name": "CreateSessionResponse",
+  "description": "Response containing the remote browser session details.",
+  "type": "object",
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "description": "Unique identifier for the created session.",
+      "example": "sess-a1b2c3d4e5f6"
+    },
+    "cdp_url": {
+      "type": "uri",
+      "description": "WebSocket URL for Chrome DevTools Protocol access.",
+      "example": "wss://tetra.agentql.com/sessions/sess-a1b2c3d4/cdp"
+    },
+    "expires_at": {
+      "type": "datetime",
+      "description": "ISO 8601 timestamp when the session will expire.",
+      "example": "2026-04-19T15:30:00Z"
+    }
+  }
+}

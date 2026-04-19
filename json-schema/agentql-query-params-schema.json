@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/agentql/refs/heads/main/json-schema/agentql-query-params-schema.json",
+  "title": "QueryParams",
+  "description": "Optional configuration parameters for the query.",
+  "type": "object",
+  "properties": {
+    "mode": {
+      "type": "string",
+      "enum": [
+        "fast",
+        "standard"
+      ],
+      "description": "Extraction speed mode. Fast is quicker but may miss dynamic content.",
+      "example": "standard"
+    },
+    "wait_for": {
+      "type": "integer",
+      "description": "Milliseconds to wait for dynamic content to load before extraction.",
+      "example": 2000
+    },
+    "scroll_to_bottom": {
+      "type": "boolean",
+      "description": "If true, scroll to the bottom of the page before extraction.",
+      "example": false
+    },
+    "include_screenshot": {
+      "type": "boolean",
+      "description": "If true, include a base64-encoded screenshot in the response.",
+      "example": false
+    },
+    "browser_profile": {
+      "type": "string",
+      "enum": [
+        "light",
+        "stealth"
+      ],
+      "description": "Browser profile to use for the request.",
+      "example": "light"
+    }
+  }
+}

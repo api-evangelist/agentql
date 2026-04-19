@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/agentql/refs/heads/main/json-schema/agentql-create-session-request-schema.json",
+  "title": "CreateSessionRequest",
+  "description": "Request body for creating a remote browser session.",
+  "type": "object",
+  "properties": {
+    "browser_ua_preset": {
+      "type": "string",
+      "enum": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "description": "Operating system to simulate in the browser user agent.",
+      "example": "macos"
+    },
+    "browser_profile": {
+      "type": "string",
+      "enum": [
+        "light",
+        "stealth"
+      ],
+      "description": "Browser behavior profile.",
+      "example": "stealth"
+    },
+    "inactivity_timeout_seconds": {
+      "type": "integer",
+      "description": "Seconds of inactivity before the session is automatically terminated.",
+      "example": 300
+    },
+    "proxy": {
+      "type": "object",
+      "description": "Proxy configuration for the browser session.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "tetra",
+            "custom"
+          ],
+          "example": "tetra"
+        }
+      }
+    }
+  }
+}

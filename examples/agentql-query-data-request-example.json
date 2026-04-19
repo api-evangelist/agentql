@@ -1,0 +1,11 @@
+{
+  "url": "https://news.ycombinator.com",
+  "query": "{ posts[] { title link score comments } }",
+  "params": {
+    "mode": "standard",
+    "wait_for": 2000,
+    "scroll_to_bottom": false,
+    "include_screenshot": false,
+    "browser_profile": "light"
+  }
+}

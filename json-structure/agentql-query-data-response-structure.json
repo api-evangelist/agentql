@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/agentql/refs/heads/main/json-structure/agentql-query-data-response-structure.json",
+  "name": "QueryDataResponse",
+  "description": "Response containing extracted structured data.",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "description": "Extracted data matching the structure defined in the query."
+    },
+    "metadata": {
+      "$ref": "#/components/schemas/ResponseMetadata"
+    }
+  }
+}

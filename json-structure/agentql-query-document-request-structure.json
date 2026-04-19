@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/agentql/refs/heads/main/json-structure/agentql-query-document-request-structure.json",
+  "name": "QueryDocumentRequest",
+  "description": "Request body for querying data from a document.",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "uri",
+      "description": "URL of the document to query (PDF or image).",
+      "example": "https://example.com/invoice.pdf"
+    },
+    "query": {
+      "type": "string",
+      "description": "AgentQL query string for structured data extraction.",
+      "example": "{ invoice { total_amount vendor_name date } }"
+    },
+    "prompt": {
+      "type": "string",
+      "description": "Natural language description of the data to extract.",
+      "example": "Extract invoice totals and vendor information"
+    }
+  }
+}
