@@ -138,6 +138,10 @@ common:
     description: Use AgentQL in Langflow visual AI workflow pipelines for web data extraction.
   - name: Playwright
     description: Extend Playwright browser automation with AgentQL AI-powered element querying and data extraction.
+- type: Integrations
+  url: https://www.agentql.com/integrations
+integrations:
+  - name: AgentQL
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
