@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AgentQL API — Query Document
+  description: 'AgentQL API — Query Document. 1 operations. Lead operation: AgentQL Query Document. Self-contained Naftiko
+    capability covering one Agentql business surface.'
+  tags:
+  - Agentql
+  - Query Document
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AGENTQL_API_KEY: AGENTQL_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: agentql-query-document
+    baseUri: https://api.agentql.com/v1
+    description: AgentQL API — Query Document business capability. Self-contained, no shared references.
+    resources:
+    - name: query-document
+      path: /query-document
+      operations:
+      - name: querydocument
+        method: POST
+        description: AgentQL Query Document
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: X-API-Key
+      value: '{{env.AGENTQL_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: agentql-query-document-rest
+    port: 8080
+    description: REST adapter for AgentQL API — Query Document. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/query-document
+      name: query-document
+      description: REST surface for query-document.
+      operations:
+      - method: POST
+        name: querydocument
+        description: AgentQL Query Document
+        call: agentql-query-document.querydocument
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: agentql-query-document-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AgentQL API — Query Document. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: agentql-query-document
+      description: AgentQL Query Document
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: agentql-query-document.querydocument
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
