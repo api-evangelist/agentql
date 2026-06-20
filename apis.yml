@@ -7,7 +7,7 @@ description: AgentQL connects LLMs and AI agents to the entire web through a spe
 url: https://raw.githubusercontent.com/api-evangelist/agentql/refs/heads/main/apis.yml
 humanURL: https://www.agentql.com/
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 position: Consumer
 tags:
