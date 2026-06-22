@@ -4,18 +4,12 @@
     {
       "source": "https://www.agentql.com/blog",
       "feed_url": "https://www.agentql.com/blog",
-      "title": "",
+      "title": "AgentQL Blog",
       "saved": 0,
-      "method": "none"
-    },
-    {
-      "source": "https://www.agentql.com/pricing",
-      "feed_url": "https://www.agentql.com/pricing",
-      "title": "",
-      "saved": 0,
-      "method": "none"
+      "method": "html-scrape",
+      "note": "No RSS/Atom feed resolves (feed/, rss.xml, blog/rss.xml all 404). HTML scrape surfaced only posts dated Mar-Apr 2025, all older than prior fetched cutoff 2026-06-14."
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-21T17:00:00Z"
 }
