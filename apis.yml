@@ -41,11 +41,11 @@ apis:
     url: https://docs.agentql.com/rest-api/authentication
   - type: OpenAPI
     url: https://raw.githubusercontent.com/api-evangelist/agentql/refs/heads/main/openapi/agentql-openapi.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/agentql-query-data.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/agentql-query-document.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/agentql-remote-browser.yaml
 - aid: agentql:remote-browser-api
   name: AgentQL Remote Browser Sessions API
@@ -90,10 +90,10 @@ common:
   url: https://docs.agentql.com/support
 - type: Console
   url: https://dev.agentql.com/playground
-- type: SDK
+- type: SDKs
   url: https://pypi.org/project/agentql/
   title: Python SDK
-- type: SDK
+- type: SDKs
   url: https://www.npmjs.com/package/agentql
   title: JavaScript SDK
 - type: CLI
