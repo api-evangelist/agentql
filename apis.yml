@@ -76,6 +76,10 @@ apis:
   - type: Documentation
     url: https://docs.agentql.com/rest-api/api-reference
 common:
+- type: DomainSecurity
+  url: security/agentql-domain-security.yml
+- type: Authentication
+  url: authentication/agentql-authentication.yml
 - type: Portal
   url: https://www.agentql.com/
 - type: Documentation
