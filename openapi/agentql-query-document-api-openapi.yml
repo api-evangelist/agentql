@@ -1,0 +1,137 @@
+openapi: 3.0.3
+info:
+  title: AgentQL Query Data Query Document API
+  description: AgentQL connects LLMs and AI agents to the entire web through natural language queries, enabling structured data extraction from web pages, documents, and browser sessions. Generated from documentation.
+  version: v1
+  x-generated-from: documentation
+servers:
+- url: https://api.agentql.com/v1
+  description: AgentQL Production API
+security:
+- ApiKeyAuth: []
+tags:
+- name: Query Document
+  description: Extract structured data from PDF and image documents
+paths:
+  /query-document:
+    post:
+      operationId: queryDocument
+      summary: AgentQL Query Document
+      description: Extract structured data from PDF documents or images (JPEG, PNG) using AgentQL query language or natural language prompts.
+      tags:
+      - Query Document
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryDocumentRequest'
+            examples:
+              QueryDocumentRequestExample:
+                summary: Default queryDocument request
+                x-microcks-default: true
+                value:
+                  url: https://example.com/invoice.pdf
+                  query: '{ invoice { total_amount vendor_name date items[] { description amount } } }'
+      responses:
+        '200':
+          description: Successful document extraction
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryDataResponse'
+              examples:
+                QueryDocument200Example:
+                  summary: Default queryDocument 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      invoice:
+                        total_amount: 4250.0
+                        vendor_name: Acme Corp
+                        date: '2026-04-01'
+                        items:
+                        - description: Professional Services
+                          amount: 4000.0
+                        - description: Travel Expenses
+                          amount: 250.0
+                    metadata:
+                      request_id: req-d4e5f6a1
+                      response_time_ms: 2103
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    QueryDataResponse:
+      type: object
+      description: Response containing extracted structured data.
+      properties:
+        data:
+          type: object
+          description: Extracted data matching the structure defined in the query.
+        metadata:
+          $ref: '#/components/schemas/ResponseMetadata'
+    ErrorResponse:
+      type: object
+      description: Error response returned when a request fails.
+      properties:
+        error:
+          type: string
+          description: Error type or code.
+          example: invalid_query
+        message:
+          type: string
+          description: Human-readable error description.
+          example: The provided query is not valid AgentQL syntax.
+        request_id:
+          type: string
+          description: Request ID for debugging.
+          example: req-a1b2c3d4
+    QueryDocumentRequest:
+      type: object
+      description: Request body for querying data from a document.
+      properties:
+        url:
+          type: string
+          format: uri
+          description: URL of the document to query (PDF or image).
+          example: https://example.com/invoice.pdf
+        query:
+          type: string
+          description: AgentQL query string for structured data extraction.
+          example: '{ invoice { total_amount vendor_name date } }'
+        prompt:
+          type: string
+          description: Natural language description of the data to extract.
+          example: Extract invoice totals and vendor information
+    ResponseMetadata:
+      type: object
+      description: Metadata about the API response.
+      properties:
+        request_id:
+          type: string
+          description: Unique identifier for this API request.
+          example: req-a1b2c3d4
+        response_time_ms:
+          type: integer
+          description: Time taken to complete the request in milliseconds.
+          example: 1847
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key from the AgentQL Dev Portal (https://dev.agentql.com)
