@@ -7,7 +7,20 @@ description: AgentQL connects LLMs and AI agents to the entire web through a spe
 url: https://raw.githubusercontent.com/api-evangelist/agentql/refs/heads/main/apis.yml
 humanURL: https://www.agentql.com/
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: true
+  try_now: true
+  public: false
+  label: Freemium (free trial) · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/agentql.png
 access: 3rd-Party
 position: Consumer
 tags:
@@ -21,35 +34,10 @@ created: '2025-08-19'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-- aid: agentql:query-data-api
-  name: AgentQL Query Data API
-  description: Extract structured JSON data from web pages using AgentQL query language or natural language prompts. Supports
-    URL-based and raw HTML input, configurable browser behavior, proxy settings, and screenshot capture.
-  humanURL: https://docs.agentql.com/rest-api/api-reference
-  baseURL: https://api.agentql.com
-  tags:
-  - Data Extraction
-  - Web Scraping
-  - REST API
-  - AI
-  properties:
-  - type: Documentation
-    url: https://docs.agentql.com/rest-api/api-reference
-  - type: GettingStarted
-    url: https://docs.agentql.com/quick-start
-  - type: Authentication
-    url: https://docs.agentql.com/rest-api/authentication
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/api-evangelist/agentql/refs/heads/main/openapi/agentql-openapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/agentql-query-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/agentql-query-document.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/agentql-remote-browser.yaml
 - aid: agentql:remote-browser-api
   name: AgentQL Remote Browser Sessions API
-  description: Create and manage remote Chrome browser sessions with Chrome DevTools Protocol (CDP) access for authenticated
+  description: >-
+    Create and manage remote Chrome browser sessions with Chrome DevTools Protocol (CDP) access for authenticated
     web automation, stealth browsing, and complex multi-step interactions.
   humanURL: https://docs.agentql.com/rest-api/api-reference
   baseURL: https://api.agentql.com
@@ -63,8 +51,9 @@ apis:
     url: https://docs.agentql.com/rest-api/api-reference
 - aid: agentql:query-document-api
   name: AgentQL Query Document API
-  description: Extract structured data from PDF documents and images (JPEG, PNG) using AgentQL query language or natural language
-    prompts. Useful for processing invoices, reports, and other document formats.
+  description: >-
+    Extract structured data from PDF documents and images (JPEG, PNG) using AgentQL query language or
+    natural language prompts. Useful for processing invoices, reports, and other document formats.
   humanURL: https://docs.agentql.com/rest-api/api-reference
   baseURL: https://api.agentql.com
   tags:
@@ -75,7 +64,75 @@ apis:
   properties:
   - type: Documentation
     url: https://docs.agentql.com/rest-api/api-reference
+- aid: agentql:agentql-query-data-api
+  name: AgentQL Query Data API
+  description: Extract structured data from web pages using AgentQL queries
+  humanURL: https://docs.agentql.com/rest-api/api-reference
+  baseURL: https://api.agentql.com
+  tags:
+  - Query Data
+  properties:
+  - type: OpenAPI
+    url: openapi/agentql-query-data-api-openapi.yml
+  - type: Documentation
+    url: https://docs.agentql.com/rest-api/api-reference
+  - type: GettingStarted
+    url: https://docs.agentql.com/quick-start
+  - type: Authentication
+    url: https://docs.agentql.com/rest-api/authentication
+  - type: X-NaftikoCapability
+    url: capabilities/agentql-query-data.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/agentql-query-document.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/agentql-remote-browser.yaml
+- aid: agentql:agentql-query-document-api
+  name: AgentQL Query Document API
+  description: Extract structured data from PDF and image documents
+  humanURL: https://docs.agentql.com/rest-api/api-reference
+  baseURL: https://api.agentql.com
+  tags:
+  - Query Document
+  properties:
+  - type: OpenAPI
+    url: openapi/agentql-query-document-api-openapi.yml
+  - type: Documentation
+    url: https://docs.agentql.com/rest-api/api-reference
+  - type: GettingStarted
+    url: https://docs.agentql.com/quick-start
+  - type: Authentication
+    url: https://docs.agentql.com/rest-api/authentication
+  - type: X-NaftikoCapability
+    url: capabilities/agentql-query-data.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/agentql-query-document.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/agentql-remote-browser.yaml
+- aid: agentql:agentql-remote-browser-api
+  name: AgentQL Remote Browser API
+  description: Manage remote Chrome browser sessions with CDP access
+  humanURL: https://docs.agentql.com/rest-api/api-reference
+  baseURL: https://api.agentql.com
+  tags:
+  - Remote Browser
+  properties:
+  - type: OpenAPI
+    url: openapi/agentql-remote-browser-api-openapi.yml
+  - type: Documentation
+    url: https://docs.agentql.com/rest-api/api-reference
+  - type: GettingStarted
+    url: https://docs.agentql.com/quick-start
+  - type: Authentication
+    url: https://docs.agentql.com/rest-api/authentication
+  - type: X-NaftikoCapability
+    url: capabilities/agentql-query-data.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/agentql-query-document.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/agentql-remote-browser.yaml
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/agentql/overview
 - type: AgenticAccess
   url: agentic-access/agentql-agentic-access.yml
 - type: DomainSecurity
