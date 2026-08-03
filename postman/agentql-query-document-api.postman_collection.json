@@ -1,0 +1,262 @@
+{
+  "info": {
+    "_postman_id": "24f8f1d7-653c-46b5-a5fc-73926fd03f10",
+    "name": "AgentQL Query Data Query Document API",
+    "description": "AgentQL connects LLMs and AI agents to the entire web through natural language queries, enabling structured data extraction from web pages, documents, and browser sessions. Generated from documentation.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:28:43.000Z",
+    "updatedAt": "2026-07-28T00:28:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-24f8f1d7-653c-46b5-a5fc-73926fd03f10"
+  },
+  "item": [
+    {
+      "name": "query-document",
+      "item": [
+        {
+          "name": "AgentQL Query Document",
+          "id": "9c98216b-7670-4532-ac3b-5a5e2973612d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<uri>\",\n  \"query\": \"<string>\",\n  \"prompt\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/query-document",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "query-document"
+              ]
+            },
+            "description": "Extract structured data from PDF documents or images (JPEG, PNG) using AgentQL query language or natural language prompts."
+          },
+          "response": [
+            {
+              "id": "46355f40-53f2-4129-840b-aa021a093bcc",
+              "name": "Successful document extraction",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"query\": \"<string>\",\n  \"prompt\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/query-document",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "query-document"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": {},\n  \"metadata\": {\n    \"request_id\": \"<string>\",\n    \"response_time_ms\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T00:28:43.000Z",
+              "updatedAt": "2026-07-28T00:28:43.000Z",
+              "uid": "35240-46355f40-53f2-4129-840b-aa021a093bcc"
+            },
+            {
+              "id": "70e280ba-6de5-4d75-926e-3e52766a871c",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"query\": \"<string>\",\n  \"prompt\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/query-document",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "query-document"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"request_id\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:28:43.000Z",
+              "updatedAt": "2026-07-28T00:28:43.000Z",
+              "uid": "35240-70e280ba-6de5-4d75-926e-3e52766a871c"
+            },
+            {
+              "id": "0bdb0e17-7a23-4837-bcac-dd651b73d0ec",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"query\": \"<string>\",\n  \"prompt\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/query-document",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "query-document"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"request_id\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:28:43.000Z",
+              "updatedAt": "2026-07-28T00:28:43.000Z",
+              "uid": "35240-0bdb0e17-7a23-4837-bcac-dd651b73d0ec"
+            }
+          ],
+          "createdAt": "2026-07-28T00:28:43.000Z",
+          "updatedAt": "2026-07-28T00:28:43.000Z",
+          "uid": "35240-9c98216b-7670-4532-ac3b-5a5e2973612d"
+        }
+      ],
+      "id": "30efdb29-3291-4e2f-bc75-c898ec0d6352",
+      "createdAt": "2026-07-28T00:28:43.000Z",
+      "updatedAt": "2026-07-28T00:28:43.000Z",
+      "uid": "35240-30efdb29-3291-4e2f-bc75-c898ec0d6352"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.agentql.com/v1"
+    }
+  ]
+}

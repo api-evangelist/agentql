@@ -1,0 +1,18 @@
+{
+  "provider": "agentql",
+  "sources": [
+    "agentql-query-data-api-openapi.yml",
+    "agentql-query-document-api-openapi.yml",
+    "agentql-remote-browser-api-openapi.yml"
+  ],
+  "outputs": [
+    "agentql-query-data-api-openapi.yml",
+    "agentql-query-document-api-openapi.yml",
+    "agentql-remote-browser-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
