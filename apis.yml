@@ -80,12 +80,6 @@ apis:
     url: https://docs.agentql.com/quick-start
   - type: Authentication
     url: https://docs.agentql.com/rest-api/authentication
-  - type: X-NaftikoCapability
-    url: capabilities/agentql-query-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/agentql-query-document.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/agentql-remote-browser.yaml
 - aid: agentql:agentql-query-document-api
   name: AgentQL Query Document API
   description: Extract structured data from PDF and image documents
@@ -102,12 +96,6 @@ apis:
     url: https://docs.agentql.com/quick-start
   - type: Authentication
     url: https://docs.agentql.com/rest-api/authentication
-  - type: X-NaftikoCapability
-    url: capabilities/agentql-query-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/agentql-query-document.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/agentql-remote-browser.yaml
 - aid: agentql:agentql-remote-browser-api
   name: AgentQL Remote Browser API
   description: Manage remote Chrome browser sessions with CDP access
@@ -124,12 +112,6 @@ apis:
     url: https://docs.agentql.com/quick-start
   - type: Authentication
     url: https://docs.agentql.com/rest-api/authentication
-  - type: X-NaftikoCapability
-    url: capabilities/agentql-query-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/agentql-query-document.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/agentql-remote-browser.yaml
 common:
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/agentql/overview
