@@ -1,0 +1,301 @@
+{
+  "item": [
+    {
+      "id": "9acef971-4f73-4669-a943-4db7e03b20a6",
+      "name": "Query Data",
+      "description": {
+        "content": "Extract structured data from web pages using AgentQL queries",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "02b4be7c-48a8-491f-9268-43a392f312c8",
+          "name": "AgentQL Query Web Page Data",
+          "request": {
+            "name": "AgentQL Query Web Page Data",
+            "description": {
+              "content": "Extract structured JSON data from a web page using AgentQL query language or natural language prompt. Supports URL-based and raw HTML input with configurable browser behavior.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query-data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<uri>\",\n  \"html\": \"<string>\",\n  \"query\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"params\": {\n    \"mode\": \"<string>\",\n    \"wait_for\": \"<integer>\",\n    \"scroll_to_bottom\": \"<boolean>\",\n    \"include_screenshot\": \"<boolean>\",\n    \"browser_profile\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c84e1faa-36df-4087-b08e-5bacde02a50e",
+              "name": "Successful data extraction",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query-data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://news.ycombinator.com\",\n  \"query\": \"{ posts[] { title link score } }\",\n  \"params\": {\n    \"mode\": \"standard\",\n    \"wait_for\": 2000\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"posts\": [\n      {\n        \"title\": \"Show HN: AgentQL connects AI agents to the web\",\n        \"link\": \"https://news.ycombinator.com/item?id=500123\",\n        \"score\": 142\n      }\n    ]\n  },\n  \"metadata\": {\n    \"request_id\": \"req-a1b2c3d4\",\n    \"response_time_ms\": 1847\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c073578f-dc63-4f46-964b-80d56fed8dd2",
+              "name": "Bad request — invalid query or missing required parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query-data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://news.ycombinator.com\",\n  \"query\": \"{ posts[] { title link score } }\",\n  \"params\": {\n    \"mode\": \"standard\",\n    \"wait_for\": 2000\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_query\",\n  \"message\": \"The provided query is not valid AgentQL syntax.\",\n  \"request_id\": \"req-a1b2c3d4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b41e94a-89e5-4c6c-bd74-443f7c0d9a9c",
+              "name": "Unauthorized — invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query-data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://news.ycombinator.com\",\n  \"query\": \"{ posts[] { title link score } }\",\n  \"params\": {\n    \"mode\": \"standard\",\n    \"wait_for\": 2000\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_query\",\n  \"message\": \"The provided query is not valid AgentQL syntax.\",\n  \"request_id\": \"req-a1b2c3d4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1825fdb6-abd9-4bb5-9bd4-b62b0cb1d66a",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query-data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://news.ycombinator.com\",\n  \"query\": \"{ posts[] { title link score } }\",\n  \"params\": {\n    \"mode\": \"standard\",\n    \"wait_for\": 2000\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_query\",\n  \"message\": \"The provided query is not valid AgentQL syntax.\",\n  \"request_id\": \"req-a1b2c3d4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.agentql.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4ba68227-6161-46b1-a8ff-1ad404a8cae5",
+    "name": "AgentQL Query Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "AgentQL connects LLMs and AI agents to the entire web through natural language queries, enabling structured data extraction from web pages, documents, and browser sessions. Generated from documentation.",
+      "type": "text/plain"
+    }
+  }
+}

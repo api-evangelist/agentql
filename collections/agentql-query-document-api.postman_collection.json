@@ -1,0 +1,250 @@
+{
+  "item": [
+    {
+      "id": "75263a87-5f26-4472-84ae-a4d5a25ed6a7",
+      "name": "Query Document",
+      "description": {
+        "content": "Extract structured data from PDF and image documents",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ef319db3-76a6-477b-81a3-7ac2292aa0e6",
+          "name": "AgentQL Query Document",
+          "request": {
+            "name": "AgentQL Query Document",
+            "description": {
+              "content": "Extract structured data from PDF documents or images (JPEG, PNG) using AgentQL query language or natural language prompts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query-document"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<uri>\",\n  \"query\": \"<string>\",\n  \"prompt\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "308330c1-35bd-4479-8098-96f978906dc9",
+              "name": "Successful document extraction",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query-document"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://example.com/invoice.pdf\",\n  \"query\": \"{ invoice { total_amount vendor_name date items[] { description amount } } }\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"invoice\": {\n      \"total_amount\": 4250,\n      \"vendor_name\": \"Acme Corp\",\n      \"date\": \"2026-04-01\",\n      \"items\": [\n        {\n          \"description\": \"Professional Services\",\n          \"amount\": 4000\n        },\n        {\n          \"description\": \"Travel Expenses\",\n          \"amount\": 250\n        }\n      ]\n    }\n  },\n  \"metadata\": {\n    \"request_id\": \"req-d4e5f6a1\",\n    \"response_time_ms\": 2103\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d01f36a7-5263-4631-b5b6-4ee106d23815",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query-document"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://example.com/invoice.pdf\",\n  \"query\": \"{ invoice { total_amount vendor_name date items[] { description amount } } }\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_query\",\n  \"message\": \"The provided query is not valid AgentQL syntax.\",\n  \"request_id\": \"req-a1b2c3d4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7acf1063-fef0-479a-9ac7-c6f636715a17",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query-document"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://example.com/invoice.pdf\",\n  \"query\": \"{ invoice { total_amount vendor_name date items[] { description amount } } }\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_query\",\n  \"message\": \"The provided query is not valid AgentQL syntax.\",\n  \"request_id\": \"req-a1b2c3d4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.agentql.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e65be3a9-d4b0-4018-a82f-c97674fb3ed5",
+    "name": "AgentQL Query Data Query Document API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "AgentQL connects LLMs and AI agents to the entire web through natural language queries, enabling structured data extraction from web pages, documents, and browser sessions. Generated from documentation.",
+      "type": "text/plain"
+    }
+  }
+}

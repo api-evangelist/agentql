@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AgentQL Query Data API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Query Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AgentQL Query Web Page Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.agentql.com/v1/query-data",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Extract structured JSON data from a web page using AgentQL query language or natural language prompt. Supports URL-based and raw HTML input with configurable browser behavior."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

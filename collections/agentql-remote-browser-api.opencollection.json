@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AgentQL Query Data Remote Browser API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Remote Browser",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AgentQL Create Remote Browser Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.agentql.com/v1/tetra/sessions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Establish a managed remote Chrome browser session with Chrome DevTools Protocol (CDP) access for authenticated web automation and stealth browsing."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

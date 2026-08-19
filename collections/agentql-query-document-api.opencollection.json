@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AgentQL Query Data Query Document API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Query Document",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AgentQL Query Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.agentql.com/v1/query-document",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Extract structured data from PDF documents or images (JPEG, PNG) using AgentQL query language or natural language prompts."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

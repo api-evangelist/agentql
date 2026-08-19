@@ -1,0 +1,202 @@
+{
+  "item": [
+    {
+      "id": "76e5b504-e98f-4746-8c55-bfd8621c4fd9",
+      "name": "Remote Browser",
+      "description": {
+        "content": "Manage remote Chrome browser sessions with CDP access",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "14b02024-c15a-430e-81aa-b5ca4ecd6e7b",
+          "name": "AgentQL Create Remote Browser Session",
+          "request": {
+            "name": "AgentQL Create Remote Browser Session",
+            "description": {
+              "content": "Establish a managed remote Chrome browser session with Chrome DevTools Protocol (CDP) access for authenticated web automation and stealth browsing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tetra",
+                "sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"browser_ua_preset\": \"<string>\",\n  \"browser_profile\": \"<string>\",\n  \"inactivity_timeout_seconds\": \"<integer>\",\n  \"proxy\": {\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "859689b3-40a5-44ee-97f3-fe86c99ca8ff",
+              "name": "Browser session created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tetra",
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"browser_ua_preset\": \"macos\",\n  \"browser_profile\": \"stealth\",\n  \"inactivity_timeout_seconds\": 300\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"session_id\": \"sess-a1b2c3d4e5f6\",\n  \"cdp_url\": \"wss://tetra.agentql.com/sessions/sess-a1b2c3d4e5f6/cdp\",\n  \"expires_at\": \"2026-04-19T15:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cdac347f-00a2-431b-ae84-79e01290c496",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tetra",
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"browser_ua_preset\": \"macos\",\n  \"browser_profile\": \"stealth\",\n  \"inactivity_timeout_seconds\": 300\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_query\",\n  \"message\": \"The provided query is not valid AgentQL syntax.\",\n  \"request_id\": \"req-a1b2c3d4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.agentql.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ed39a07d-a5b2-4af9-ae59-b3fa7fa1d282",
+    "name": "AgentQL Query Data Remote Browser API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "AgentQL connects LLMs and AI agents to the entire web through natural language queries, enabling structured data extraction from web pages, documents, and browser sessions. Generated from documentation.",
+      "type": "text/plain"
+    }
+  }
+}
