@@ -32,7 +32,7 @@ tags:
 - REST API
 created: '2025-08-19'
 modified: '2026-05-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: agentql:remote-browser-api
   name: AgentQL Remote Browser Sessions API
