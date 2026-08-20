@@ -60,6 +60,11 @@ apis:
   - Document Parsing
   - PDF
   - Data Extraction
+  - Artificial Intelligence
+  tags_raw:
+  - Document Parsing
+  - PDF
+  - Data Extraction
   - AI
   properties:
   - type: Documentation
