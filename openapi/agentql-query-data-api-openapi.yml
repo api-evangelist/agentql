@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: AgentQL Query Data API
   description: AgentQL connects LLMs and AI agents to the entire web through natural language queries, enabling structured data extraction from web pages, documents, and browser sessions. Generated from documentation.
@@ -91,29 +91,6 @@ components:
           type: integer
           description: Time taken to complete the request in milliseconds.
           example: 1847
-    QueryDataRequest:
-      type: object
-      description: Request body for querying data from a web page.
-      properties:
-        url:
-          type: string
-          format: uri
-          description: The URL of the web page to query.
-          example: https://news.ycombinator.com
-        html:
-          type: string
-          description: Raw HTML content to query instead of a URL.
-          example: <html><body><h1>Hello World</h1></body></html>
-        query:
-          type: string
-          description: AgentQL query string for structured data extraction.
-          example: '{ posts[] { title link score } }'
-        prompt:
-          type: string
-          description: Natural language description of the data to extract (alternative to query).
-          example: Extract the top 10 posts with their titles, links, and scores
-        params:
-          $ref: '#/components/schemas/QueryParams'
     ErrorResponse:
       type: object
       description: Error response returned when a request fails.
@@ -169,6 +146,29 @@ components:
           - stealth
           description: Browser profile to use for the request.
           example: light
+    QueryDataRequest:
+      type: object
+      description: Request body for querying data from a web page.
+      properties:
+        url:
+          type: string
+          format: uri
+          description: The URL of the web page to query.
+          example: https://news.ycombinator.com
+        html:
+          type: string
+          description: Raw HTML content to query instead of a URL.
+          example: <html><body><h1>Hello World</h1></body></html>
+        query:
+          type: string
+          description: AgentQL query string for structured data extraction.
+          example: '{ posts[] { title link score } }'
+        prompt:
+          type: string
+          description: Natural language description of the data to extract (alternative to query).
+          example: Extract the top 10 posts with their titles, links, and scores
+        params:
+          $ref: '#/components/schemas/QueryParams'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: AgentQL Query Data Remote Browser API
   description: AgentQL connects LLMs and AI agents to the entire web through natural language queries, enabling structured data extraction from web pages, documents, and browser sessions. Generated from documentation.
@@ -60,22 +60,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      description: Error response returned when a request fails.
-      properties:
-        error:
-          type: string
-          description: Error type or code.
-          example: invalid_query
-        message:
-          type: string
-          description: Human-readable error description.
-          example: The provided query is not valid AgentQL syntax.
-        request_id:
-          type: string
-          description: Request ID for debugging.
-          example: req-a1b2c3d4
     CreateSessionRequest:
       type: object
       description: Request body for creating a remote browser session.
@@ -127,6 +111,22 @@ components:
           format: date-time
           description: ISO 8601 timestamp when the session will expire.
           example: '2026-04-19T15:30:00Z'
+    ErrorResponse:
+      type: object
+      description: Error response returned when a request fails.
+      properties:
+        error:
+          type: string
+          description: Error type or code.
+          example: invalid_query
+        message:
+          type: string
+          description: Human-readable error description.
+          example: The provided query is not valid AgentQL syntax.
+        request_id:
+          type: string
+          description: Request ID for debugging.
+          example: req-a1b2c3d4
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
