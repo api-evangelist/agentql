@@ -130,6 +130,8 @@ apis:
   - type: Authentication
     url: https://docs.agentql.com/rest-api/authentication
 common:
+- type: Website
+  url: https://www.agentql.com/
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/agentql/overview
 - type: AgenticAccess
