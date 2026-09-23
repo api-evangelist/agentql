@@ -1,9 +1,7 @@
 {
   "provider": "agentql",
   "sources": [
-    "agentql-query-data-api-openapi.yml",
-    "agentql-query-document-api-openapi.yml",
-    "agentql-remote-browser-api-openapi.yml"
+    "_ae-authored/agentql-openapi.yaml"
   ],
   "outputs": [
     "agentql-query-data-api-openapi.yml",
@@ -14,7 +12,13 @@
   "errors": [],
   "warnings": [],
   "notes": [
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "agentql-openapi.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "agentql-query-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "agentql-query-document-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "agentql-remote-browser-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
