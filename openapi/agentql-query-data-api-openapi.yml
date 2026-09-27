@@ -79,6 +79,66 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      description: Error response returned when a request fails.
+      properties:
+        error:
+          type: string
+          description: Error type or code.
+          example: invalid_query
+        message:
+          type: string
+          description: Human-readable error description.
+          example: The provided query is not valid AgentQL syntax.
+        request_id:
+          type: string
+          description: Request ID for debugging.
+          example: req-a1b2c3d4
+    QueryDataResponse:
+      type: object
+      description: Response containing extracted structured data.
+      properties:
+        data:
+          type: object
+          description: Extracted data matching the structure defined in the query.
+        metadata:
+          $ref: '#/components/schemas/ResponseMetadata'
+    QueryDataRequest:
+      type: object
+      description: Request body for querying data from a web page.
+      properties:
+        url:
+          type: string
+          format: uri
+          description: The URL of the web page to query.
+          example: https://news.ycombinator.com
+        html:
+          type: string
+          description: Raw HTML content to query instead of a URL.
+          example: <html><body><h1>Hello World</h1></body></html>
+        query:
+          type: string
+          description: AgentQL query string for structured data extraction.
+          example: '{ posts[] { title link score } }'
+        prompt:
+          type: string
+          description: Natural language description of the data to extract (alternative to query).
+          example: Extract the top 10 posts with their titles, links, and scores
+        params:
+          $ref: '#/components/schemas/QueryParams'
+    ResponseMetadata:
+      type: object
+      description: Metadata about the API response.
+      properties:
+        request_id:
+          type: string
+          description: Unique identifier for this API request.
+          example: req-a1b2c3d4
+        response_time_ms:
+          type: integer
+          description: Time taken to complete the request in milliseconds.
+          example: 1847
     QueryParams:
       type: object
       description: Optional configuration parameters for the query.
@@ -109,66 +169,6 @@ components:
           - stealth
           description: Browser profile to use for the request.
           example: light
-    ErrorResponse:
-      type: object
-      description: Error response returned when a request fails.
-      properties:
-        error:
-          type: string
-          description: Error type or code.
-          example: invalid_query
-        message:
-          type: string
-          description: Human-readable error description.
-          example: The provided query is not valid AgentQL syntax.
-        request_id:
-          type: string
-          description: Request ID for debugging.
-          example: req-a1b2c3d4
-    QueryDataResponse:
-      type: object
-      description: Response containing extracted structured data.
-      properties:
-        data:
-          type: object
-          description: Extracted data matching the structure defined in the query.
-        metadata:
-          $ref: '#/components/schemas/ResponseMetadata'
-    ResponseMetadata:
-      type: object
-      description: Metadata about the API response.
-      properties:
-        request_id:
-          type: string
-          description: Unique identifier for this API request.
-          example: req-a1b2c3d4
-        response_time_ms:
-          type: integer
-          description: Time taken to complete the request in milliseconds.
-          example: 1847
-    QueryDataRequest:
-      type: object
-      description: Request body for querying data from a web page.
-      properties:
-        url:
-          type: string
-          format: uri
-          description: The URL of the web page to query.
-          example: https://news.ycombinator.com
-        html:
-          type: string
-          description: Raw HTML content to query instead of a URL.
-          example: <html><body><h1>Hello World</h1></body></html>
-        query:
-          type: string
-          description: AgentQL query string for structured data extraction.
-          example: '{ posts[] { title link score } }'
-        prompt:
-          type: string
-          description: Natural language description of the data to extract (alternative to query).
-          example: Extract the top 10 posts with their titles, links, and scores
-        params:
-          $ref: '#/components/schemas/QueryParams'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
