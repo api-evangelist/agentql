@@ -75,27 +75,22 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ResponseMetadata:
+    ErrorResponse:
       type: object
-      description: Metadata about the API response.
+      description: Error response returned when a request fails.
       properties:
+        error:
+          type: string
+          description: Error type or code.
+          example: invalid_query
+        message:
+          type: string
+          description: Human-readable error description.
+          example: The provided query is not valid AgentQL syntax.
         request_id:
           type: string
-          description: Unique identifier for this API request.
+          description: Request ID for debugging.
           example: req-a1b2c3d4
-        response_time_ms:
-          type: integer
-          description: Time taken to complete the request in milliseconds.
-          example: 1847
-    QueryDataResponse:
-      type: object
-      description: Response containing extracted structured data.
-      properties:
-        data:
-          type: object
-          description: Extracted data matching the structure defined in the query.
-        metadata:
-          $ref: '#/components/schemas/ResponseMetadata'
     QueryDocumentRequest:
       type: object
       description: Request body for querying data from a document.
@@ -113,22 +108,27 @@ components:
           type: string
           description: Natural language description of the data to extract.
           example: Extract invoice totals and vendor information
-    ErrorResponse:
+    QueryDataResponse:
       type: object
-      description: Error response returned when a request fails.
+      description: Response containing extracted structured data.
       properties:
-        error:
-          type: string
-          description: Error type or code.
-          example: invalid_query
-        message:
-          type: string
-          description: Human-readable error description.
-          example: The provided query is not valid AgentQL syntax.
+        data:
+          type: object
+          description: Extracted data matching the structure defined in the query.
+        metadata:
+          $ref: '#/components/schemas/ResponseMetadata'
+    ResponseMetadata:
+      type: object
+      description: Metadata about the API response.
+      properties:
         request_id:
           type: string
-          description: Request ID for debugging.
+          description: Unique identifier for this API request.
           example: req-a1b2c3d4
+        response_time_ms:
+          type: integer
+          description: Time taken to complete the request in milliseconds.
+          example: 1847
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
