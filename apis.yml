@@ -130,6 +130,8 @@ apis:
   - type: Authentication
     url: https://docs.agentql.com/rest-api/authentication
 common:
+- type: Plans
+  url: plans/agentql-plans-pricing.yml
 - type: Website
   url: https://www.agentql.com/
 - type: PostmanWorkspace
