@@ -1,251 +1,87 @@
-specification: API Commons Plans
-specificationVersion: '0.1'
-schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
-provider: AgentQL
-providerId: agentql
-created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: true
-tags:
-  - Agents
-  - Artificial Intelligence
-  - Web Scraping
-  - Data Extraction
-  - Browser Automation
-description: AgentQL prices its data-extraction and Remote Browser APIs as a four-tier model. Free Trial
-  is a non-recurring 300-call grant. Starter ($0/mo) is a no-commitment metered plan with a per-call
-  overage. Professional ($99/mo) bundles 10k API calls and 500 browser-hours. Enterprise is a custom
-  contract for managed/on-prem deployments. Both API calls and Remote Browser hours are metered with
-  separate per-unit overage rates.
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-07'
+method: searched
+source: https://www.agentql.com/pricing
 sources:
-  - https://www.agentql.com/pricing
+- https://www.agentql.com/pricing
+provenance:
+  tool: all/0-working/economics/harvest_pricing.py
+  run: 20261007T104522
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: per-call
+delivery:
+  delivery: managed+licensed
+  method: page
+  read: '2026-10-07'
+  evidence: On-premise deployment available
+  managed_tier: Professional
+published: true
+note: Tiered plans with per-API-call overage and remote browser hourly rates; Enterprise is custom.
+plan_count: 4
+currency: USD
 plans:
-  - id: agentql-free-trial
-    name: Free Trial
-    type: freemium
-    description: One-time trial for evaluating AgentQL.
-    entries:
-      - label: API calls (one-time grant)
-        name: api_calls_trial
-        type: quota
-        metric: request
-        limit: 300
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate limit
-        name: rate_limit
-        type: quota
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Remote Browser hours (one-time grant)
-        name: remote_browser_hours_trial
-        type: quota
-        metric: hour
-        limit: 1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Concurrent sessions
-        name: concurrent_sessions
-        type: quota
-        metric: session
-        limit: 1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Community and email support
-  - id: agentql-starter
-    name: Starter
-    type: usage-based
-    description: Free monthly base with metered overage on calls and Remote Browser hours.
-    entries:
-      - label: Monthly base
-        name: starter_base
-        type: subscription
-        metric: month
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: API calls included
-        name: api_calls_included
-        type: quota
-        metric: request
-        limit: 50
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: API call overage
-        name: api_calls_overage
-        type: metered
-        metric: request
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: '0.02'
-        userMultiplied: false
-      - label: Rate limit
-        name: rate_limit
-        type: quota
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Remote Browser hours included
-        name: remote_browser_hours_included
-        type: quota
-        metric: hour
-        limit: 10
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Remote Browser hour overage
-        name: remote_browser_hours_overage
-        type: metered
-        metric: hour
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: '0.12'
-        userMultiplied: false
-      - label: Concurrent sessions
-        name: concurrent_sessions
-        type: quota
-        metric: session
-        limit: 5
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Community and email support
-  - id: agentql-professional
-    name: Professional
-    type: subscription
-    description: $99/month subscription with 10k API calls and 500 Remote Browser hours included.
-    entries:
-      - label: Monthly subscription
-        name: pro_subscription
-        type: subscription
-        metric: month
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '99.00'
-        userMultiplied: false
-      - label: API calls included
-        name: api_calls_included
-        type: quota
-        metric: request
-        limit: 10000
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: API call overage
-        name: api_calls_overage
-        type: metered
-        metric: request
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: '0.015'
-        userMultiplied: false
-      - label: Rate limit
-        name: rate_limit
-        type: quota
-        metric: requests_per_minute
-        limit: 50
-        timeFrame: minute
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Remote Browser hours included
-        name: remote_browser_hours_included
-        type: quota
-        metric: hour
-        limit: 500
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Remote Browser hour overage
-        name: remote_browser_hours_overage
-        type: metered
-        metric: hour
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: '0.10'
-        userMultiplied: false
-      - label: Concurrent sessions
-        name: concurrent_sessions
-        type: quota
-        metric: session
-        limit: 100
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Priority email and community support
-  - id: agentql-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-priced managed deployment with on-premise option, dedicated environment, 24/7
-      support, and named account management.
-    entries:
-      - label: Custom contract
-        name: enterprise_contract
-        type: subscription
-        metric: contract
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: contact sales
-        userMultiplied: false
-    elements:
-      - name: Managed solutions
-      - name: Dedicated environment
-      - name: On-premise deployment options
-      - name: 24/7 support
-      - name: Dedicated account manager
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- name: Free trial
+  price_text: Try out AgentQL for free, no credit card required
+  period: none
+  included_quota: 300 free API calls, 1 hr of remote browser, 1 concurrent remote browser session
+- name: Starter
+  price_text: $0 / monthly
+  price: 0
+  currency: USD
+  period: month
+  included_quota: 50 free API calls/month; 10 hrs of remote browser included; 5 concurrent remote browser
+    sessions
+  overage: $0.02 per API call after the initial limit; $0.12/hr of remote browser time
+- name: Professional
+  price_text: $99 / monthly
+  price: 99
+  currency: USD
+  period: month
+  included_quota: 10,000 API calls/month included; 500 hrs of remote browser included; 100 concurrent
+    remote browser sessions
+  overage: $0.015 per API call after the initial limit; $0.10/hr of remote browser time
+- name: Enterprise
+  price_text: Custom
+  period: none
+  included_quota: Fully managed dedicated cloud environment; On-premise deployment available; 24/7 premium
+    support
+rate_limit_statements:
+- 10 API calls per minute
+- 50 API calls per minute
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - metered
+  units: []
+  plans:
+  - name: Free trial
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Starter
+    access: other
+    model: metered
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Professional
+    access: other
+    model: hybrid
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
