@@ -125,27 +125,6 @@ components:
           - stealth
           description: Browser profile to use for the request.
           example: light
-    QueryDataResponse:
-      type: object
-      description: Response containing extracted structured data.
-      properties:
-        data:
-          type: object
-          description: Extracted data matching the structure defined in the query.
-        metadata:
-          $ref: '#/components/schemas/ResponseMetadata'
-    ResponseMetadata:
-      type: object
-      description: Metadata about the API response.
-      properties:
-        request_id:
-          type: string
-          description: Unique identifier for this API request.
-          example: req-a1b2c3d4
-        response_time_ms:
-          type: integer
-          description: Time taken to complete the request in milliseconds.
-          example: 1847
     QueryDataRequest:
       type: object
       description: Request body for querying data from a web page.
@@ -169,6 +148,27 @@ components:
           example: Extract the top 10 posts with their titles, links, and scores
         params:
           $ref: '#/components/schemas/QueryParams'
+    QueryDataResponse:
+      type: object
+      description: Response containing extracted structured data.
+      properties:
+        data:
+          type: object
+          description: Extracted data matching the structure defined in the query.
+        metadata:
+          $ref: '#/components/schemas/ResponseMetadata'
+    ResponseMetadata:
+      type: object
+      description: Metadata about the API response.
+      properties:
+        request_id:
+          type: string
+          description: Unique identifier for this API request.
+          example: req-a1b2c3d4
+        response_time_ms:
+          type: integer
+          description: Time taken to complete the request in milliseconds.
+          example: 1847
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

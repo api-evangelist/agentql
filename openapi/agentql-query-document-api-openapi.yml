@@ -75,6 +75,18 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ResponseMetadata:
+      type: object
+      description: Metadata about the API response.
+      properties:
+        request_id:
+          type: string
+          description: Unique identifier for this API request.
+          example: req-a1b2c3d4
+        response_time_ms:
+          type: integer
+          description: Time taken to complete the request in milliseconds.
+          example: 1847
     ErrorResponse:
       type: object
       description: Error response returned when a request fails.
@@ -117,18 +129,6 @@ components:
           description: Extracted data matching the structure defined in the query.
         metadata:
           $ref: '#/components/schemas/ResponseMetadata'
-    ResponseMetadata:
-      type: object
-      description: Metadata about the API response.
-      properties:
-        request_id:
-          type: string
-          description: Unique identifier for this API request.
-          example: req-a1b2c3d4
-        response_time_ms:
-          type: integer
-          description: Time taken to complete the request in milliseconds.
-          example: 1847
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
