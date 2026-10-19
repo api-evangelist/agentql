@@ -129,6 +129,28 @@ apis:
     url: https://docs.agentql.com/quick-start
   - type: Authentication
     url: https://docs.agentql.com/rest-api/authentication
+- aid: agentql:agentql-agentql-rest-api-api
+  name: AgentQL AgentQL REST API
+  description: The AgentQL REST API API from AgentQL — 4 operation(s) for agentql rest api.
+  humanURL: https://docs.agentql.com/rest-api/api-reference
+  baseURL: https://api.agentql.com
+  tags:
+  - AgentQL REST API
+  properties:
+  - type: OpenAPI
+    url: openapi/agentql-agentql-rest-api-api-openapi.yml
+- aid: agentql:agentql-agentql-tetra-remote-chrome-browser-api
+  name: AgentQL AgentQL Tetra (Remote Chrome Browser) API
+  description: >-
+    The AgentQL Tetra (Remote Chrome Browser) API from AgentQL — 4 operation(s) for agentql tetra (remote
+    chrome browser).
+  humanURL: https://docs.agentql.com/rest-api/api-reference
+  baseURL: https://api.agentql.com
+  tags:
+  - AgentQL Tetra (Remote Chrome Browser)
+  properties:
+  - type: OpenAPI
+    url: openapi/agentql-agentql-tetra-remote-chrome-browser-api-openapi.yml
 common:
 - type: RateLimits
   url: rate-limits/agentql-rate-limits.yml

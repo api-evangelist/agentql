@@ -1,0 +1,414 @@
+openapi: 3.2.0
+info:
+  title: AgentQL REST API
+  version: 0.1.0
+tags:
+- name: AgentQL REST API
+paths:
+  /v1/query-data:
+    post:
+      tags:
+      - AgentQL REST API
+      summary: Query Data Service
+      description: 'Get the AgentQL response for the data query.
+
+
+        If the AQL query is not provided, generate it using the prompt from request.'
+      operationId: query_data_service_v1_query_data_post
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: X-TF-Request-Origin
+        in: header
+        required: false
+        schema:
+          type: string
+          default: rest-api-data
+          title: X-Tf-Request-Origin
+      - name: content-type
+        in: header
+        required: true
+        schema:
+          type: string
+          title: Content-Type
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestWebPageQueryRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestQueryResponse'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Client Error
+  /v1/usage:
+    get:
+      tags:
+      - AgentQL REST API
+      summary: Get Usage
+      description: Get API key usage and subscription information for your account.
+      operationId: get_usage_v1_usage_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageResponse'
+        4XX:
+          description: Client Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - APIKeyHeader: []
+  /query-data:
+    post:
+      tags:
+      - AgentQL REST API
+      summary: Query Data Service
+      description: 'Get the AgentQL response for the data query.
+
+
+        If the AQL query is not provided, generate it using the prompt from request.'
+      operationId: query_data_service_query_data_post
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: X-TF-Request-Origin
+        in: header
+        required: false
+        schema:
+          type: string
+          default: rest-api-data
+          title: X-Tf-Request-Origin
+      - name: content-type
+        in: header
+        required: true
+        schema:
+          type: string
+          title: Content-Type
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestWebPageQueryRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestQueryResponse'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Client Error
+  /usage:
+    get:
+      tags:
+      - AgentQL REST API
+      summary: Get Usage
+      description: Get API key usage and subscription information for your account.
+      operationId: get_usage_usage_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageResponse'
+        4XX:
+          description: Client Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - APIKeyHeader: []
+components:
+  schemas:
+    UsageStats:
+      properties:
+        current_subscription:
+          anyOf:
+          - $ref: '#/components/schemas/SubscriptionStatus'
+          - type: 'null'
+        api_key_usage:
+          $ref: '#/components/schemas/UsageInfo'
+        total_account_usage:
+          $ref: '#/components/schemas/UsageInfo'
+      type: object
+      required:
+      - api_key_usage
+      - total_account_usage
+      title: UsageStats
+      description: This class represents the exposed usage information for a user.
+    RestUrlQueryParams:
+      properties:
+        mode:
+          $ref: '#/components/schemas/ModeType'
+          description: The query response mode. Can be either `'standard'` or `'fast'`. Defaults to `'fast'`.
+          default: fast
+        wait_for:
+          type: integer
+          title: Wait For
+          description: Wait for the page to load content for a specified duration (in seconds). Maximum wait time is 10 seconds
+          default: 0
+        is_scroll_to_bottom_enabled:
+          type: boolean
+          title: Is Scroll To Bottom Enabled
+          description: Indicates whether scroll to the bottom of the page before capturing the snapshot is enabled
+          default: false
+        is_screenshot_enabled:
+          type: boolean
+          title: Is Screenshot Enabled
+          description: Indicates whether screenshot capture is enabled
+          default: false
+        browser_profile:
+          $ref: '#/components/schemas/BrowserProfileType'
+          description: 'Browser profile: ''light'' for fast headless browsing, ''tf-browser'' for TinyFish Browser, ''tf-browser-154'' for TinyFish Browser on Chromium 154 (''stealth'' is a deprecated alias of ''tf-browser'')'
+          default: light
+        proxy:
+          anyOf:
+          - $ref: '#/components/schemas/TetraProxy'
+          - $ref: '#/components/schemas/CustomProxy'
+          - type: 'null'
+          title: Proxy
+          description: Proxy configuration for the browser session
+      additionalProperties: false
+      type: object
+      title: RestUrlQueryParams
+    CustomProxy:
+      properties:
+        type:
+          type: string
+          const: custom
+          title: Type
+          description: 'Type of proxy: ''custom'' for external proxy'
+          default: custom
+        url:
+          type: string
+          title: Url
+          description: Proxy server URL
+        username:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Username
+          description: Username for proxy authentication
+        password:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Password
+          description: Password for proxy authentication
+      additionalProperties: false
+      type: object
+      required:
+      - url
+      title: CustomProxy
+      description: Custom external proxy configuration
+    ModeType:
+      type: string
+      enum:
+      - fast
+      - standard
+      title: ModeType
+      description: 'FAST: Uses a faster pipeline for generating the response.
+
+        STANDARD: Uses the standard pipeline for generating the response.'
+    UsageInfo:
+      properties:
+        current_cycle:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Current Cycle
+        lifetime:
+          type: integer
+          title: Lifetime
+      type: object
+      required:
+      - lifetime
+      title: UsageInfo
+      description: This class represents the current cycle usage & lifetime usage
+    ResponseMetadata:
+      properties:
+        request_id:
+          type: string
+          title: Request Id
+        generated_query:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Generated Query
+        screenshot:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Screenshot
+      type: object
+      title: ResponseMetadata
+    RestQueryResponse:
+      properties:
+        data:
+          additionalProperties: true
+          type: object
+          title: Data
+        metadata:
+          anyOf:
+          - $ref: '#/components/schemas/ResponseMetadata'
+          - type: 'null'
+      type: object
+      required:
+      - data
+      title: RestQueryResponse
+    BrowserProfileType:
+      type: string
+      enum:
+      - light
+      - stealth
+      - tf-browser
+      - tf-browser-154
+      title: BrowserProfileType
+      description: 'Browser profile types. LIGHT provides fast headless browsing for standard automation.
+
+        TF_BROWSER provides agent-focused capabilities with full browser features.
+
+        TF_BROWSER_154 is the TF Browser on Chromium 154. TF_BROWSER (Chromium 147) and TF_BROWSER_154
+
+        are separate profiles, not two builds of one: each has its own image, its own anti-bot persona
+
+        and its own tetra engine. A 147 persona or image never serves a 154 session, and the reverse.
+
+        STEALTH is retired as a distinct profile (the anchor browser is gone): request models accept it
+
+        as a deprecated alias of TF_BROWSER (see RequestBrowserProfile). The member survives so stored
+
+        rows (telemetry `mode`, usage) still parse.'
+    RestWebPageQueryRequest:
+      properties:
+        query:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Query
+          description: AgentQL query
+        prompt:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Prompt
+          description: A description of expected data to be extracted
+        url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Url
+          description: The URL of the webpage to query
+        html:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Html
+          description: The HTML of the webpage to query
+        params:
+          $ref: '#/components/schemas/RestUrlQueryParams'
+      additionalProperties: false
+      type: object
+      title: RestWebPageQueryRequest
+    UsageResponse:
+      properties:
+        data:
+          $ref: '#/components/schemas/UsageStats'
+        metadata:
+          $ref: '#/components/schemas/ResponseMetadataBase'
+      type: object
+      required:
+      - data
+      title: UsageResponse
+      description: This class represents the returned usage payload for a user.
+    ResponseMetadataBase:
+      properties:
+        request_id:
+          type: string
+          title: Request Id
+      type: object
+      title: ResponseMetadataBase
+    TetraProxy:
+      properties:
+        type:
+          type: string
+          const: tetra
+          title: Type
+          description: 'Type of proxy: ''tetra'' for built-in proxy'
+          default: tetra
+        country_code:
+          type: string
+          title: Country Code
+          description: Country code for tetra proxy
+          default: US
+      additionalProperties: false
+      type: object
+      title: TetraProxy
+      description: Tetra built-in proxy configuration
+    ErrorResponse:
+      properties:
+        error_info:
+          type: string
+          title: Error Info
+        status_code:
+          type: integer
+          title: Status Code
+        metadata:
+          $ref: '#/components/schemas/ResponseMetadataBase'
+      type: object
+      required:
+      - error_info
+      - status_code
+      title: ErrorResponse
+    SubscriptionStatus:
+      properties:
+        lifetime_usage_limit:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Lifetime Usage Limit
+        current_cycle_free_usage_limit:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Current Cycle Free Usage Limit
+        current_cycle_start:
+          type: string
+          format: date-time
+          title: Current Cycle Start
+        current_cycle_end:
+          type: string
+          format: date-time
+          title: Current Cycle End
+      type: object
+      required:
+      - current_cycle_start
+      - current_cycle_end
+      title: SubscriptionStatus
+      description: This class represents information about the current active subscription
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key

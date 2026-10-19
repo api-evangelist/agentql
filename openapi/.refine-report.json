@@ -1,9 +1,12 @@
 {
   "provider": "agentql",
   "sources": [
+    "_original/agentql-openapi.json",
     "_ae-authored/agentql-openapi.yaml"
   ],
   "outputs": [
+    "agentql-agentql-rest-api-api-openapi.yml",
+    "agentql-agentql-tetra-remote-chrome-browser-api-openapi.yml",
     "agentql-query-data-api-openapi.yml",
     "agentql-query-document-api-openapi.yml",
     "agentql-remote-browser-api-openapi.yml"
@@ -12,9 +15,12 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "agentql-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "agentql-openapi.json: declared missing tag: AgentQL REST API",
+    "agentql-openapi.json: declared missing tag: AgentQL Tetra (Remote Chrome Browser)",
     "agentql-openapi.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "apis.yml register: written (+2 apis, 7 total)"
   ],
   "skipped": [
     "agentql-query-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",

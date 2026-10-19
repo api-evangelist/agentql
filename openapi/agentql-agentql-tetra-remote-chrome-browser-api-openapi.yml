@@ -1,0 +1,664 @@
+openapi: 3.2.0
+info:
+  title: AgentQL Tetra (Remote Chrome Browser) API
+  version: 0.1.0
+tags:
+- name: AgentQL Tetra (Remote Chrome Browser)
+paths:
+  /v1/tetra/sessions:
+    post:
+      tags:
+      - AgentQL Tetra (Remote Chrome Browser)
+      summary: Create Session
+      description: Create a new Tetra browser session.
+      operationId: create_session_v1_tetra_sessions_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              anyOf:
+              - $ref: '#/components/schemas/BrowserRequest'
+              - type: 'null'
+              title: Params
+              description: Additional browser session configuration
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrowserSession'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /v1/tetra/usage:
+    get:
+      tags:
+      - AgentQL Tetra (Remote Chrome Browser)
+      summary: List Session Usage
+      description: List Tetra browser session usage for the authenticated user.
+      operationId: list_session_usage_v1_tetra_usage_get
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: sub_user_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Sub User Id
+      - name: session_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Session Id
+      - name: start_after
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Start After
+      - name: end_before
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: End Before
+      - name: updated_after
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Updated After
+      - name: updated_before
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Updated Before
+      - name: status
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - $ref: '#/components/schemas/StatusType'
+          - type: 'null'
+          title: Status
+      - name: sort
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/TelemetrySort'
+          default: created_at_desc
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 1000
+          minimum: 1
+          default: 100
+          title: Limit
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+          title: Page
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelemetryListResponse'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Client Error
+  /tetra/sessions:
+    post:
+      tags:
+      - AgentQL Tetra (Remote Chrome Browser)
+      summary: Create Session
+      description: Create a new Tetra browser session.
+      operationId: create_session_tetra_sessions_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              anyOf:
+              - $ref: '#/components/schemas/BrowserRequest'
+              - type: 'null'
+              title: Params
+              description: Additional browser session configuration
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrowserSession'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /tetra/usage:
+    get:
+      tags:
+      - AgentQL Tetra (Remote Chrome Browser)
+      summary: List Session Usage
+      description: List Tetra browser session usage for the authenticated user.
+      operationId: list_session_usage_tetra_usage_get
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: sub_user_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Sub User Id
+      - name: session_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Session Id
+      - name: start_after
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Start After
+      - name: end_before
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: End Before
+      - name: updated_after
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Updated After
+      - name: updated_before
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Updated Before
+      - name: status
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - $ref: '#/components/schemas/StatusType'
+          - type: 'null'
+          title: Status
+      - name: sort
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/TelemetrySort'
+          default: created_at_desc
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 1000
+          minimum: 1
+          default: 100
+          title: Limit
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+          title: Page
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelemetryListResponse'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Client Error
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    StatusType:
+      type: string
+      enum:
+      - running
+      - ended
+      title: StatusType
+    CustomProxy:
+      properties:
+        type:
+          type: string
+          const: custom
+          title: Type
+          description: 'Type of proxy: ''custom'' for external proxy'
+          default: custom
+        url:
+          type: string
+          title: Url
+          description: Proxy server URL
+        username:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Username
+          description: Username for proxy authentication
+        password:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Password
+          description: Password for proxy authentication
+      additionalProperties: false
+      type: object
+      required:
+      - url
+      title: CustomProxy
+      description: Custom external proxy configuration
+    BrowserUserAgentType:
+      type: string
+      enum:
+      - windows
+      - macos
+      - linux
+      title: BrowserUserAgentType
+    BrowserSession:
+      properties:
+        session_id:
+          type: string
+          title: Session Id
+        cdp_url:
+          type: string
+          title: Cdp Url
+        base_url:
+          type: string
+          title: Base Url
+      type: object
+      required:
+      - session_id
+      - cdp_url
+      - base_url
+      title: BrowserSession
+      description: Response model for browser session
+    ShutdownMode:
+      type: string
+      enum:
+      - on_disconnect
+      - on_inactivity_timeout
+      title: ShutdownMode
+      description: Controls how a browser session is torn down on disconnect.
+    BrowserRequest:
+      properties:
+        browser_ua_preset:
+          $ref: '#/components/schemas/BrowserUserAgentType'
+          description: The user agent preset to use for the browser session
+          default: linux
+        browser_profile:
+          $ref: '#/components/schemas/BrowserProfileType'
+          description: Browser profile - 'light' for fast browsing, 'tf-browser' for full-featured TF Browser, 'tf-browser-154' for TF Browser on Chromium 154 ('stealth' is a deprecated alias of 'tf-browser'). Selects the browser IMAGE; unrelated to profile_id, which is saved auth state.
+          default: light
+        profile_id:
+          anyOf:
+          - type: string
+            pattern: ^[a-z0-9._-]{1,36}$
+          - type: 'null'
+          title: Profile Id
+          description: ID of a saved browser profile (auth state) to attach for save-back and future hydration; distinct from browser_profile, which selects the browser image.
+        shutdown_mode:
+          $ref: '#/components/schemas/ShutdownMode'
+          description: Controls how the browser session is torn down on disconnect. 'on_disconnect' stops immediately after there are no more active connections to the browser, 'on_inactivity_timeout' keeps alive until timeout allowing for reconnection.
+          default: on_disconnect
+        inactivity_timeout_seconds:
+          type: integer
+          maximum: 86400.0
+          minimum: 5.0
+          title: Inactivity Timeout Seconds
+          description: The inactivity timeout in seconds (up to 24h)
+          default: 300
+        session_max_duration_seconds:
+          anyOf:
+          - type: integer
+            maximum: 86400.0
+            minimum: 1.0
+          - type: 'null'
+          title: Session Max Duration Seconds
+          description: The hard session duration in seconds (up to 24h)
+        proxy:
+          anyOf:
+          - $ref: '#/components/schemas/TetraProxy'
+          - $ref: '#/components/schemas/CustomProxy'
+          - type: 'null'
+          title: Proxy
+          description: Proxy configuration for this browser session
+        sub_user_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Sub User Id
+          description: Optional sub-user identifier for tracking sessions within a user account
+        request_origin:
+          anyOf:
+          - type: string
+            maxLength: 255
+          - type: 'null'
+          title: Request Origin
+          description: Opaque caller-supplied request origin for session attribution
+        branding:
+          type: boolean
+          title: Branding
+          description: Whether to show TinyFish branding on the session end screen
+          default: true
+        browser_startup_url:
+          anyOf:
+          - type: string
+            maxLength: 2083
+            minLength: 1
+            format: uri
+          - type: string
+            const: about:blank
+          - type: 'null'
+          title: Browser Startup Url
+          description: If set, Tetra pre-navigates Chromium to this URL before the CDP client connects (faster prewarming for known target sites). Accepts an http(s) URL or the literal 'about:blank' to pre-open an empty tab.
+      type: object
+      title: BrowserRequest
+      description: Request model for browser session
+    BrowserProfileType:
+      type: string
+      enum:
+      - light
+      - stealth
+      - tf-browser
+      - tf-browser-154
+      title: BrowserProfileType
+      description: 'Browser profile types. LIGHT provides fast headless browsing for standard automation.
+
+        TF_BROWSER provides agent-focused capabilities with full browser features.
+
+        TF_BROWSER_154 is the TF Browser on Chromium 154. TF_BROWSER (Chromium 147) and TF_BROWSER_154
+
+        are separate profiles, not two builds of one: each has its own image, its own anti-bot persona
+
+        and its own tetra engine. A 147 persona or image never serves a 154 session, and the reverse.
+
+        STEALTH is retired as a distinct profile (the anchor browser is gone): request models accept it
+
+        as a deprecated alias of TF_BROWSER (see RequestBrowserProfile). The member survives so stored
+
+        rows (telemetry `mode`, usage) still parse.'
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    TelemetryEntry:
+      properties:
+        session_id:
+          type: string
+          title: Session Id
+        user_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: User Id
+        sub_user_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Sub User Id
+        request_origin:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Request Origin
+        base_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Base Url
+        cdp_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Cdp Url
+        mode:
+          anyOf:
+          - $ref: '#/components/schemas/BrowserProfileType'
+          - type: 'null'
+        start_time:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Start Time
+        end_time:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: End Time
+        duration_ms:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Duration Ms
+        proxy_trg_rx_bytes:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Proxy Trg Rx Bytes
+        proxy_trg_tx_bytes:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Proxy Trg Tx Bytes
+        status:
+          anyOf:
+          - $ref: '#/components/schemas/StatusType'
+          - type: 'null'
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - session_id
+      - user_id
+      - sub_user_id
+      - request_origin
+      - base_url
+      - cdp_url
+      - mode
+      - start_time
+      - end_time
+      - duration_ms
+      - proxy_trg_rx_bytes
+      - proxy_trg_tx_bytes
+      - status
+      - created_at
+      - updated_at
+      title: TelemetryEntry
+    ResponseMetadataBase:
+      properties:
+        request_id:
+          type: string
+          title: Request Id
+      type: object
+      title: ResponseMetadataBase
+    ErrorResponse:
+      properties:
+        error_info:
+          type: string
+          title: Error Info
+        status_code:
+          type: integer
+          title: Status Code
+        metadata:
+          $ref: '#/components/schemas/ResponseMetadataBase'
+      type: object
+      required:
+      - error_info
+      - status_code
+      title: ErrorResponse
+    TetraProxy:
+      properties:
+        type:
+          type: string
+          const: tetra
+          title: Type
+          description: 'Type of proxy: ''tetra'' for built-in proxy'
+          default: tetra
+        country_code:
+          type: string
+          title: Country Code
+          description: Country code for tetra proxy
+          default: US
+      additionalProperties: false
+      type: object
+      title: TetraProxy
+      description: Tetra built-in proxy configuration
+    TelemetryListResponse:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/TelemetryEntry'
+          type: array
+          title: Items
+        total:
+          type: integer
+          title: Total
+        limit:
+          type: integer
+          title: Limit
+        page:
+          type: integer
+          title: Page
+        total_pages:
+          type: integer
+          title: Total Pages
+        has_more:
+          type: boolean
+          title: Has More
+      type: object
+      required:
+      - items
+      - total
+      - limit
+      - page
+      - total_pages
+      - has_more
+      title: TelemetryListResponse
+    TelemetrySort:
+      type: string
+      enum:
+      - created_at_desc
+      - updated_at_asc
+      title: TelemetrySort
+      description: 'Sort modes for /usage results.
+
+
+        `created_at_desc` is the default and preserves the historical ordering. `updated_at_asc`
+
+        is for incremental consumers (Mino''s browser usage aggregator) that cursor by `updated_at`
+
+        and need stable ascending iteration; pair with `updated_after` filtering.'
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key
