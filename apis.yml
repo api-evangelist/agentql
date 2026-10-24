@@ -57,6 +57,10 @@ apis:
   - Browser Automation
   - Remote Browser
   - CDP
+  tags_raw:
+  - Browser Automation
+  - Remote Browser
+  - CDP
   - Web Automation
   properties:
   - type: Documentation
