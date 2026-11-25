@@ -72,13 +72,15 @@ AgentQL connects LLMs and AI agents to the entire web through a specialized quer
 
 Everything profiled for AgentQL is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/agentql/](https://apis.io/providers/agentql/)** — or go straight to one of the APIs or properties below.
 
-### APIs (5)
+### APIs (7)
 
 - [AgentQL Remote Browser Sessions API](https://apis.io/apis/agentql/remote-browser-api/) — Create and manage remote Chrome browser sessions with Chrome DevTools Protocol (CDP) access for authenticated web automation, stealth browsing, and complex…
 - [AgentQL Query Document API](https://apis.io/apis/agentql/query-document-api/) — Extract structured data from PDF documents and images (JPEG, PNG) using AgentQL query language or natural language prompts. Useful for processing invoices,…
 - [AgentQL Query Data API](https://apis.io/apis/agentql/agentql-query-data-api/) — Extract structured data from web pages using AgentQL queries
 - [AgentQL Query Document API](https://apis.io/apis/agentql/agentql-query-document-api/) — Extract structured data from PDF and image documents
 - [AgentQL Remote Browser API](https://apis.io/apis/agentql/agentql-remote-browser-api/) — Manage remote Chrome browser sessions with CDP access
+- [AgentQL AgentQL REST API](https://apis.io/apis/agentql/agentql-agentql-rest-api-api/) — The AgentQL REST API API from AgentQL — 4 operation(s) for agentql rest api.
+- [AgentQL AgentQL Tetra (Remote Chrome Browser) API](https://apis.io/apis/agentql/agentql-agentql-tetra-remote-chrome-browser-api/) — The AgentQL Tetra (Remote Chrome Browser) API from AgentQL — 4 operation(s) for agentql tetra (remote chrome browser).
 
 ### Published properties
 
@@ -94,7 +96,7 @@ Model Context Protocol servers that expose the API to agents.
 
 Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Agentql Agentic Access](https://apis.io/agentic-access/agentql/agentql-agentic-access/)
+- [AgentQL Agentic Access](https://apis.io/agentic-access/agentql/agentql-agentic-access/)
 
 #### JSON Schema (7)
 
@@ -112,13 +114,13 @@ The data models the API reads and writes.
 
 Data models expressed in JSON Structure.
 
-- [Agentql Create Session Request Structure](https://apis.io/json-structure/agentql/agentql-create-session-request-structure/)
-- [Agentql Create Session Response Structure](https://apis.io/json-structure/agentql/agentql-create-session-response-structure/)
-- [Agentql Query Data Request Structure](https://apis.io/json-structure/agentql/agentql-query-data-request-structure/)
-- [Agentql Query Data Response Structure](https://apis.io/json-structure/agentql/agentql-query-data-response-structure/)
-- [Agentql Query Document Request Structure](https://apis.io/json-structure/agentql/agentql-query-document-request-structure/)
-- [Agentql Query Params Structure](https://apis.io/json-structure/agentql/agentql-query-params-structure/)
-- [Agentql Response Metadata Structure](https://apis.io/json-structure/agentql/agentql-response-metadata-structure/)
+- [AgentQL Create Session Request Structure](https://apis.io/json-structure/agentql/agentql-create-session-request-structure/)
+- [AgentQL Create Session Response Structure](https://apis.io/json-structure/agentql/agentql-create-session-response-structure/)
+- [AgentQL Query Data Request Structure](https://apis.io/json-structure/agentql/agentql-query-data-request-structure/)
+- [AgentQL Query Data Response Structure](https://apis.io/json-structure/agentql/agentql-query-data-response-structure/)
+- [AgentQL Query Document Request Structure](https://apis.io/json-structure/agentql/agentql-query-document-request-structure/)
+- [AgentQL Query Params Structure](https://apis.io/json-structure/agentql/agentql-query-params-structure/)
+- [AgentQL Response Metadata Structure](https://apis.io/json-structure/agentql/agentql-response-metadata-structure/)
 
 #### JSON-LD (1)
 
@@ -136,8 +138,8 @@ The provider's domain terms, defined.
 
 Example requests and responses.
 
-- [Agentql Create Session Response Example](https://apis.io/examples/agentql/agentql-create-session-response-example/)
-- [Agentql Query Data Request Example](https://apis.io/examples/agentql/agentql-query-data-request-example/)
+- [AgentQL Create Session Response Example](https://apis.io/examples/agentql/agentql-create-session-response-example/)
+- [AgentQL Query Data Request Example](https://apis.io/examples/agentql/agentql-query-data-request-example/)
 
 #### Collections (6)
 
@@ -160,26 +162,26 @@ Spectral rulesets for the provider's contracts.
 
 Authentication, trust centre, and vulnerability disclosure.
 
-- [Agentql Authentication](https://apis.io/security/agentql/agentql-authentication/)
-- [Agentql Domain Security](https://apis.io/security/agentql/agentql-domain-security/)
+- [AgentQL Authentication](https://apis.io/security/agentql/agentql-authentication/)
+- [AgentQL Domain Security](https://apis.io/security/agentql/agentql-domain-security/)
 
 #### Plans and pricing (1)
 
 Published plans, tiers and prices.
 
-- [Agentql Plans Pricing](https://apis.io/plans/agentql/agentql-plans-pricing/)
+- [AgentQL Plans Pricing](https://apis.io/plans/agentql/agentql-plans-pricing/)
 
 #### Rate limits (1)
 
 Published request limits.
 
-- [Agentql Rate Limits](https://apis.io/rate-limits/agentql/agentql-rate-limits/)
+- [AgentQL Rate Limits](https://apis.io/rate-limits/agentql/agentql-rate-limits/)
 
 #### FinOps (1)
 
 What the API costs to run, by operation.
 
-- [Agentql Finops](https://apis.io/finops/agentql/agentql-finops/)
+- [AgentQL Finops](https://apis.io/finops/agentql/agentql-finops/)
 
 ## Where to find this API
 
@@ -195,18 +197,18 @@ Links to the company's own pages. This repository publishes no copy of their spe
 
 ## API Evangelist rating
 
-**Kin Score 33.5** — thin · rubric 0.24.0 · scored 2026-10-17
+**Kin Score 37.1** — thin · rubric 0.28.1 · scored 2026-11-21
 
 | Facet | Score |
 |---|---|
-| Discoverability | 70.0 |
-| Contract quality | 21.9 |
+| Discoverability | 65.0 |
+| Contract quality | 47.3 |
 | Contract governance | 9.8 |
-| Operational transparency | 10.5 |
+| Operational transparency | 11.9 |
 | Developer ergonomics | 53.6 |
-| Access clarity | 42.1 |
+| Access clarity | 34.0 |
 
-**Agent readiness 31.8** — agent-ready
+**Agent readiness 32.8** — agent-ready
 
 | Agent-readiness dimension | Result |
 |---|---|
@@ -229,8 +231,14 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Protected Resource Metadata | — |
 | Dynamic Client Registration | — |
 | Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | — |
+| MCP Tool Quality | na |
+| Onboarding Descriptor | — |
+| Dns Aid Index | na |
+| Markdown Negotiation | na |
 
-**Regulatory alignment 15.5** — Horizontal (data, software, accessibility, platform)
+**Regulatory alignment 10.0** — Horizontal (data, software, accessibility, platform)
 
 The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/agentql/](https://apis.io/providers/agentql/).
 
